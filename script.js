@@ -1,8 +1,9 @@
+// declare all possible sets of characters
 let upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let lowerLetters = "abcdefghijklmnopqrstuvwxyz";
 let numbers = "0123456789";
 let specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" + '"'; // I removed space
-
+// declare variables
 let upperInput = 0;
 let lowerInput = 0;
 let numberInput = 0;
@@ -18,12 +19,15 @@ let randomCharacter = "";
 let generateBtn = document.querySelector("#generate");
 // Assignment code here
 function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min) + min);
 }
+// generate my password
 function generatePassword() {
+  // generate pw, but it is shorter than password length input
   for (i = 1; i <= (inputLength - chartypes); i++) {
     password = password + pwCharacterString.charAt(getRandomInt(0, pwCharacterString.length - 1));
   }
+  //to be sure we have at least one character from each set, add it
   if (upperInput === 1) {
     randomCharacter = upperLetters.charAt(getRandomInt(0, upperLetters.length - 1));
     randomplace = getRandomInt(1, password.length);
@@ -50,6 +54,7 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword() {
+  // declare all the variables, just in case user generate it again
   upperInput = 0;
   lowerInput = 0;
   numberInput = 0;
@@ -59,6 +64,7 @@ function writePassword() {
   password = "";
   inputLength = 0;
   randomCharacter = "";
+  // initial data
   inputLength = parseInt(prompt("Please enter password length (number between 8 and 128).", 8));
   if ((inputLength >= 8) && (inputLength <= 128)) {
     if (confirm("Would you like to include uppercase letters?")) {
