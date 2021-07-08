@@ -1,9 +1,34 @@
-// Assignment code here
+let upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let lowerLetters= "abcdefghijklmnopqrstuvwxyz";
+let nubers="0123456789";
+let specialChar= "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" +'"'; // I removed space
 
+let upperInput=0;
+let lowerInput=0;
+let nuberInput=0;
+let specialInput=0;
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
+// Assignment code here
 function generatePassword(){
+  let pwCharacterString="";
+  if (upperInput=1){
+    pwCharacterString=pwCharacterString+upperLetters;
+  }
+  if (lowerInput=1){
+    pwCharacterString=pwCharacterString+lowerLetters;
+  }
+  if (nuberInput=1){
+    pwCharacterString=pwCharacterString+nubers;
+  }
+  if (specialInput=1){
+    pwCharacterString=pwCharacterString+specialChar;
+  }
+  
+  
+  
+
 
 }
 
@@ -12,17 +37,24 @@ function generatePassword(){
 function writePassword() {
   let inLength = parseInt(prompt("Please enter password length (number between 8 and 128).", 8));
   if ((inLength>=8)&&(inLength<=128)){
-   let upperCase = confirm ("Would you like to include uppercase letters?");
-   let lowerCase = confirm ("Would you like to include lowerrcase letters?");
-   let numbers = confirm ("Would you like to include numbers?");
-   let specialChar = confirm ("Would you like to include special characters?");
-   console.log(upperCase);
-   if ((!upperCase)&&(!lowerCase)&&(!numbers)&&(!specialChar)) {
+   if (confirm ("Would you like to include uppercase letters?")){
+    upperInput++;
+   };
+   if (confirm ("Would you like to include lowerrcase letters?")){
+     lowerInput++;
+   }
+   if (confirm ("Would you like to include numbers?")){
+     nuberInput++;
+   }
+   if (confirm ("Would you like to include special characters?")){
+     specialInput++;
+   } 
+   if ((upperInput+lowerInput+nuberInput+specialInput)===0) {
      alert("Error! Please include at least one character type.");
      return;
    }else{ 
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  let password = generatePassword();
+  let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
   }
